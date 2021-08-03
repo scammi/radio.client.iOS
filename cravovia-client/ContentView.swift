@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    let radioClient = RadioClient()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Button("PLAY ", action:  {radioClient.print()})
     }
 }
 

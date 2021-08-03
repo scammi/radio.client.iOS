@@ -11,6 +11,7 @@
 		D4A3888326B9D9C8003BF092 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A3888226B9D9C8003BF092 /* ContentView.swift */; };
 		D4A3888526B9D9CA003BF092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A3888426B9D9CA003BF092 /* Assets.xcassets */; };
 		D4A3888826B9D9CA003BF092 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A3888726B9D9CA003BF092 /* Preview Assets.xcassets */; };
+		D4A3889026B9EF34003BF092 /* RadioClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A3888F26B9EF34003BF092 /* RadioClientController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		D4A3888426B9D9CA003BF092 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4A3888726B9D9CA003BF092 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D4A3888926B9D9CA003BF092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4A3888F26B9EF34003BF092 /* RadioClientController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioClientController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				D4A3888026B9D9C8003BF092 /* cravovia_clientApp.swift */,
+				D4A3888F26B9EF34003BF092 /* RadioClientController.swift */,
 				D4A3888226B9D9C8003BF092 /* ContentView.swift */,
 				D4A3888426B9D9CA003BF092 /* Assets.xcassets */,
 				D4A3888926B9D9CA003BF092 /* Info.plist */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4A3888326B9D9C8003BF092 /* ContentView.swift in Sources */,
+				D4A3889026B9EF34003BF092 /* RadioClientController.swift in Sources */,
 				D4A3888126B9D9C8003BF092 /* cravovia_clientApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
