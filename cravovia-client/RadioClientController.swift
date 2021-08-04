@@ -17,6 +17,7 @@ struct RadioClient {
         if !playing
         {
             NSLog("playing")
+            
             let urlCracovia = URL(string: "https://tolkien.republicahosting.net:1614/live")
             let playerItem:AVPlayerItem = AVPlayerItem(url: urlCracovia!)
             player = AVPlayer(playerItem: playerItem)
