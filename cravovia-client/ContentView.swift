@@ -8,7 +8,6 @@
 import SwiftUI
 import AVFoundation
 
-var player: AVPlayer?
 
 struct ContentView: View {
     var radioClient = RadioClient()
@@ -16,15 +15,10 @@ struct ContentView: View {
     var body: some View {
         HStack {
             Button("PLAY ", action:  {
-                NSLog("playing")
-                let urlCracovia = URL(string: "https://tolkien.republicahosting.net:1614/live")
-                let playerItem:AVPlayerItem = AVPlayerItem(url: urlCracovia!)
-                player = AVPlayer(playerItem: playerItem)
-                player?.play()
+                radioClient.play()
             })
             Button("STOP ", action:  {
-                NSLog("stop")
-                player?.pause()
+                radioClient.pause()
             })
         }
     }

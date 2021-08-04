@@ -8,14 +8,27 @@
 import Foundation
 import AVFoundation
 
+var player: AVPlayer?
+var playing = false
+
 struct RadioClient {
-    var player: AVPlayer?
-    
-    func print() {
-        NSLog("hello");
-    }
     
     func play() {
-        NSLog("playing")
+        if !playing
+        {
+            NSLog("playing")
+            let urlCracovia = URL(string: "https://tolkien.republicahosting.net:1614/live")
+            let playerItem:AVPlayerItem = AVPlayerItem(url: urlCracovia!)
+            player = AVPlayer(playerItem: playerItem)
+            
+            playing = true
+        }
+        player?.play()
+    }
+    
+    func pause() {
+        NSLog("pause")
+        player?.pause()
+        playing = false
     }
 }
