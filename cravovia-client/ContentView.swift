@@ -8,10 +8,18 @@
 import SwiftUI
 import AVFoundation
 
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
+         print(application.beginReceivingRemoteControlEvents())
+         return true
+    }
+}
 
 struct ContentView: View {
+//    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var radioClient = RadioClient()
-    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some View {
         HStack {
             Button("PLAY ", action:  {
