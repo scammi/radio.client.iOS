@@ -10,12 +10,14 @@ import AVFoundation
 import MediaPlayer
 
 var player: AVPlayer?
-var playing = false
 
 class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableObject {
     
     @Published var currentlyPlaying: String = " "
+    @Published var playing = false
     
+    var startedListening = false
+
     func play() {
         if !playing
         {
@@ -43,14 +45,16 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
             nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = "album title"
             
             MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
-            playing = true
+            startedListening = true
         }
         player?.play()
+        playing = true
     }
     
     func pause() {
         NSLog("pause")
         player?.pause()
+        playing = false
     }
     
     func metadataOutput(_ output: AVPlayerItemMetadataOutput, didOutputTimedMetadataGroups groups: [AVTimedMetadataGroup], from track: AVPlayerItemTrack?) {

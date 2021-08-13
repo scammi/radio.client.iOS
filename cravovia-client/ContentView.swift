@@ -22,15 +22,19 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("\(radioClient.currentlyPlaying)")
+            Text("\(radioClient.currentlyPlaying)").padding()
         }
         HStack {
-            Button("PLAY ", action:  {
+            Button(action: {
                 radioClient.play()
-            })
-            Button("STOP ", action:  {
+            }) {
+                 Image(systemName: "play").font(.title)
+            }
+            Button(action:  {
                 radioClient.pause()
-            })
+            }) {
+                Image(systemName: "pause")
+            }
         }
     }
 }
