@@ -17,11 +17,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 struct ContentView: View {
-    var radioClient = RadioClient()
-    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @ObservedObject var radioClient = RadioClient()
     
     var body: some View {
+        VStack {
+            Text("\(radioClient.currentlyPlaying)")
+        }
         HStack {
             Button("PLAY ", action:  {
                 radioClient.play()

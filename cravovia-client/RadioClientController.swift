@@ -12,8 +12,9 @@ import MediaPlayer
 var player: AVPlayer?
 var playing = false
 
-class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate {
-    weak var myDelegate: AVPlayerItemMetadataOutputPushDelegate?
+class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableObject {
+    
+    @Published var currentlyPlaying: String = " "
     
     func play() {
         if !playing
@@ -55,9 +56,8 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate {
     func metadataOutput(_ output: AVPlayerItemMetadataOutput, didOutputTimedMetadataGroups groups: [AVTimedMetadataGroup], from track: AVPlayerItemTrack?) {
         if let item = groups.first?.items.first // make this an AVMetadata item
         {
-            item.value(forKeyPath: "value") // looking for that key bro
-            let Song = (item.value(forKeyPath: "value")!)
-             NSLog("Now Playing: \n \(Song)") // print the results
+            self.currentlyPlaying = String(describing: item.value(forKeyPath: "value")!)
+            NSLog("Now Playing: \n \(self.currentlyPlaying)") // print the results
         } else {
             NSLog("MetaData Error") // No Metadata or Could not read
         }
