@@ -17,9 +17,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 struct ContentView: View {
-//    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var radioClient = RadioClient()
+    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some View {
         HStack {
             Button("PLAY ", action:  {

@@ -20,16 +20,19 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate {
         {
             NSLog("playing")
             
+            // Create playerItem
             let urlCracovia = URL(string: "https://tolkien.republicahosting.net:1614/live")
             let playerItem: AVPlayerItem = AVPlayerItem(url: urlCracovia!)
             
+            // Metadata output processing
             let metadataOutput = AVPlayerItemMetadataOutput(identifiers: nil)
             metadataOutput.setDelegate(self, queue: DispatchQueue.main)
             playerItem.add(metadataOutput)
             
+            // Create palyer
             player = AVPlayer(playerItem: playerItem)
-            playing = true
             
+            // Display palying info
             var nowPlayingInfo = [String: Any]()
             
             nowPlayingInfo[MPNowPlayingInfoPropertyAssetURL] = urlCracovia
@@ -39,6 +42,7 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate {
             nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = "album title"
             
             MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+            playing = true
         }
         player?.play()
     }
@@ -46,7 +50,6 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate {
     func pause() {
         NSLog("pause")
         player?.pause()
-        playing = false
     }
     
     func metadataOutput(_ output: AVPlayerItemMetadataOutput, didOutputTimedMetadataGroups groups: [AVTimedMetadataGroup], from track: AVPlayerItemTrack?) {
