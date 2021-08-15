@@ -8,16 +8,7 @@
 import SwiftUI
 import AVFoundation
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
-         print(application.beginReceivingRemoteControlEvents())
-         return true
-    }
-}
-
 struct ContentView: View {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @ObservedObject var radioClient = RadioClient()
     
     var body: some View {
