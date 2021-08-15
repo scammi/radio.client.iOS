@@ -44,6 +44,12 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
             nowPlayingInfo[MPMediaItemPropertyAlbumArtist] = "album artist"
             nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = "album title"
             
+            do {
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+               } catch(let error) {
+                   print(error.localizedDescription)
+               }
+            
             MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
             startedListening = true
         }
