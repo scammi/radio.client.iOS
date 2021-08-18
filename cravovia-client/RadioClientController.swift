@@ -15,16 +15,15 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
     
     @Published var currentlyPlaying: String = " "
     @Published var playing = false
+    var streaming = "https://tolkien.republicahosting.net:1614/live"
     
-    var startedListening = false
-
     func play() {
         if !playing
         {
             NSLog("playing")
             
             // Create playerItem
-            let urlCracovia = URL(string: "https://tolkien.republicahosting.net:1614/live")
+            let urlCracovia = URL(string: streaming)
             let playerItem: AVPlayerItem = AVPlayerItem(url: urlCracovia!)
             
             // Metadata output processing
@@ -36,22 +35,37 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
             player = AVPlayer(playerItem: playerItem)
             
             // Display palying info
+            let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
             var nowPlayingInfo = [String: Any]()
             
-            nowPlayingInfo[MPNowPlayingInfoPropertyAssetURL] = urlCracovia
-            nowPlayingInfo[MPMediaItemPropertyTitle] = "titulo"
-            nowPlayingInfo[MPMediaItemPropertyArtist] = "artista"
-            nowPlayingInfo[MPMediaItemPropertyAlbumArtist] = "album artist"
-            nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = "album title"
+            let image = UIImage(named: "cracovia")!
+            let mediaArtwork = MPMediaItemArtwork(boundsSize: image.size) { (size: CGSize) -> UIImage in
+              return image
+            }
+            
+            nowPlayingInfo[MPNowPlayingInfoPropertyAssetURL] = streaming
+            nowPlayingInfo[MPNowPlayingInfoPropertyMediaType] = "stream"
+            nowPlayingInfo[MPNowPlayingInfoPropertyIsLiveStream] = true
+            nowPlayingInfo[MPMediaItemPropertyTitle] = "Radio Cracovia"
+            nowPlayingInfo[MPMediaItemPropertyArtist] = "artist"
+            nowPlayingInfo[MPMediaItemPropertyArtwork] = mediaArtwork
+            nowPlayingInfo[MPMediaItemPropertyAlbumArtist] = "albumartist"
+            nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = "albumtitle"
+            
+            nowPlayingInfoCenter.nowPlayingInfo = nowPlayingInfo
+            nowPlayingInfoCenter.playbackState = .playing
             
             do {
                 try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+                
+                try AVAudioSession.sharedInstance().setActive(true)
+                
                } catch(let error) {
                    print(error.localizedDescription)
                }
             
-            MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
-            startedListening = true
+            print("Now playing lock screen: \(String(describing: MPNowPlayingInfoCenter.default().nowPlayingInfo))")
+            setupNowPlayingInfoCenter()
         }
         player?.play()
         playing = true
@@ -72,4 +86,16 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
             NSLog("MetaData Error") // No Metadata or Could not read
         }
     }
+    
+    func setupNowPlayingInfoCenter(){
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        MPRemoteCommandCenter.shared().playCommand.addTarget {event in
+          self.play()
+          return .success
+        }
+        MPRemoteCommandCenter.shared().pauseCommand.addTarget {event in
+          self.pause()
+          return .success
+        }
+      }
 }

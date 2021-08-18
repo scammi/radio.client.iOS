@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D47A9C1A26CDCFC10070FA6A /* cracovia.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A9C1926CDCFC10070FA6A /* cracovia.png */; };
 		D4A3888126B9D9C8003BF092 /* cravovia_clientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A3888026B9D9C8003BF092 /* cravovia_clientApp.swift */; };
 		D4A3888326B9D9C8003BF092 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A3888226B9D9C8003BF092 /* ContentView.swift */; };
 		D4A3888526B9D9CA003BF092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A3888426B9D9CA003BF092 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D47A9C1926CDCFC10070FA6A /* cracovia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cracovia.png; path = ../../../../../Desktop/cracovia.png; sourceTree = "<group>"; };
 		D4A3887D26B9D9C8003BF092 /* cravovia-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cravovia-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A3888026B9D9C8003BF092 /* cravovia_clientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cravovia_clientApp.swift; sourceTree = "<group>"; };
 		D4A3888226B9D9C8003BF092 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 		D4A3888626B9D9CA003BF092 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				D47A9C1926CDCFC10070FA6A /* cracovia.png */,
 				D4A3888726B9D9CA003BF092 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -129,6 +132,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D47A9C1A26CDCFC10070FA6A /* cracovia.png in Resources */,
 				D4A3888826B9D9CA003BF092 /* Preview Assets.xcassets in Resources */,
 				D4A3888526B9D9CA003BF092 /* Assets.xcassets in Resources */,
 			);
