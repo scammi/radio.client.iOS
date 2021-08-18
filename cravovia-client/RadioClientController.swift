@@ -31,42 +31,14 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
             metadataOutput.setDelegate(self, queue: DispatchQueue.main)
             playerItem.add(metadataOutput)
             
+            setMediaInformation(streaming: streaming)
+            setupNowPlayingInfoCenter()
+            setAudioPriority()
+            
             // Create palyer
             player = AVPlayer(playerItem: playerItem)
-            
-            // Display palying info
-            let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
-            var nowPlayingInfo = [String: Any]()
-            
-            let image = UIImage(named: "cracovia")!
-            let mediaArtwork = MPMediaItemArtwork(boundsSize: image.size) { (size: CGSize) -> UIImage in
-              return image
-            }
-            
-            nowPlayingInfo[MPNowPlayingInfoPropertyAssetURL] = streaming
-            nowPlayingInfo[MPNowPlayingInfoPropertyMediaType] = "stream"
-            nowPlayingInfo[MPNowPlayingInfoPropertyIsLiveStream] = true
-            nowPlayingInfo[MPMediaItemPropertyTitle] = "Radio Cracovia"
-            nowPlayingInfo[MPMediaItemPropertyArtist] = "artist"
-            nowPlayingInfo[MPMediaItemPropertyArtwork] = mediaArtwork
-            nowPlayingInfo[MPMediaItemPropertyAlbumArtist] = "albumartist"
-            nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = "albumtitle"
-            
-            nowPlayingInfoCenter.nowPlayingInfo = nowPlayingInfo
-            nowPlayingInfoCenter.playbackState = .playing
-            
-            do {
-                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-                
-                try AVAudioSession.sharedInstance().setActive(true)
-                
-               } catch(let error) {
-                   print(error.localizedDescription)
-               }
-            
-            print("Now playing lock screen: \(String(describing: MPNowPlayingInfoCenter.default().nowPlayingInfo))")
-            setupNowPlayingInfoCenter()
         }
+        
         player?.play()
         playing = true
     }
@@ -99,3 +71,42 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
         }
       }
 }
+
+func setMediaInformation(streaming: String)
+{
+    // Display palying info
+    let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
+    var nowPlayingInfo = [String: Any]()
+    
+    let image = UIImage(named: "cracovia")!
+    let mediaArtwork = MPMediaItemArtwork(boundsSize: image.size) { (size: CGSize) -> UIImage in
+      return image
+    }
+    
+    nowPlayingInfo[MPNowPlayingInfoPropertyAssetURL] = streaming
+    nowPlayingInfo[MPNowPlayingInfoPropertyMediaType] = "stream"
+    nowPlayingInfo[MPNowPlayingInfoPropertyIsLiveStream] = true
+    nowPlayingInfo[MPMediaItemPropertyTitle] = "Radio Cracovia"
+    nowPlayingInfo[MPMediaItemPropertyArtist] = "artist"
+    nowPlayingInfo[MPMediaItemPropertyArtwork] = mediaArtwork
+    nowPlayingInfo[MPMediaItemPropertyAlbumArtist] = "albumartist"
+    nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = "albumtitle"
+    
+    nowPlayingInfoCenter.nowPlayingInfo = nowPlayingInfo
+    nowPlayingInfoCenter.playbackState = .playing
+    
+    print("Now playing lock screen: \(String(describing: MPNowPlayingInfoCenter.default().nowPlayingInfo))")
+}
+
+func setAudioPriority()
+{
+    do {
+        try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+        try AVAudioSession.sharedInstance().setActive(true)
+        
+       } catch(let error) {
+           print(error.localizedDescription)
+       }
+}
+
+
