@@ -31,7 +31,7 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
             metadataOutput.setDelegate(self, queue: DispatchQueue.main)
             playerItem.add(metadataOutput)
             
-            setMediaInformation(streaming: streaming)
+            setMediaInformation(streamingURL: urlCracovia!)
             setupNowPlayingInfoCenter()
             setAudioPriority()
             
@@ -72,7 +72,7 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
       }
 }
 
-func setMediaInformation(streaming: String)
+func setMediaInformation(streamingURL: URL)
 {
     // Display palying info
     let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
@@ -83,7 +83,7 @@ func setMediaInformation(streaming: String)
       return image
     }
     
-    nowPlayingInfo[MPNowPlayingInfoPropertyAssetURL] = streaming
+    nowPlayingInfo[MPNowPlayingInfoPropertyAssetURL] = streamingURL
     nowPlayingInfo[MPNowPlayingInfoPropertyMediaType] = "stream"
     nowPlayingInfo[MPNowPlayingInfoPropertyIsLiveStream] = true
     nowPlayingInfo[MPMediaItemPropertyTitle] = "Radio Cracovia"
