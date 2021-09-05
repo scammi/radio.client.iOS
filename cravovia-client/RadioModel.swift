@@ -9,6 +9,7 @@ import Foundation
 
 class RadioModel {
     
+    let urlCracovia = URL(string: "https://tolkien.republicahosting.net:1614/live")
     var nowPlaying: String = "";
     var playing: Bool = false;
 }

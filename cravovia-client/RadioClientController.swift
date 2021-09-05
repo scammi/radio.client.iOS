@@ -52,7 +52,7 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
         if let item = groups.first?.items.first // make this an AVMetadata item
         {
             self.currentlyPlaying = String(describing: item.value(forKeyPath: "value")!)
-            setMediaInformation(streamingURL: URL(string: "https://tolkien.republicahosting.net:1614/live")!, metadata: currentlyPlaying)
+            setMediaInformation(streamingURL: self.urlCracovia!, metadata: currentlyPlaying)
 
             NSLog("Now Playing: \n \(self.currentlyPlaying)") // print the results
         } else {
