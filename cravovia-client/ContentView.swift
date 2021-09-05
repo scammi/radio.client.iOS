@@ -12,21 +12,29 @@ struct ContentView: View {
     @ObservedObject var radioClient = RadioClient()
     
     var body: some View {
-        VStack {
-            Text("\(radioClient.currentlyPlaying)").padding()
+        NavigationView {
+            VStack {
+                Spacer()
+
+                Text("\(radioClient.currentlyPlaying)").padding()
+                HStack {
+                    Button(action: {
+                        radioClient.play()
+                    }) {
+                        if (radioClient.playing)
+                        {
+                            Image(systemName: "pause").font(.title)
+                        }
+                        else
+                        {
+                            Image(systemName: "play").font(.title)
+                        }
+                            
+                    }
+                }.onAppear(perform: setUp)
+
+            }.navigationTitle("Radio Cracovia")
         }
-        HStack {
-            Button(action: {
-                radioClient.play()
-            }) {
-                 Image(systemName: "play").font(.title)
-            }
-            Button(action:  {
-                radioClient.pause()
-            }) {
-                Image(systemName: "pause")
-            }
-        }.onAppear(perform: setUp)
     }
     
     private func setUp(){

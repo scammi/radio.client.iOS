@@ -28,17 +28,23 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
         
         setMediaInformation(streamingURL: self.urlCracovia!, metadata: currentlyPlaying)
 
-
         // Create palyer
         player = AVPlayer(playerItem: playerItem)
     }
     
     func play() {
-        
         setupNowPlayingInfoCenter()
         
-        player?.play()
-        playing = true
+        if(playing)
+        {
+            player?.pause()
+            playing = false
+        }
+        else
+        {
+            player?.play()
+            playing = true
+        }
     }
     
     func pause() {
