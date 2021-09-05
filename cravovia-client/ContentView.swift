@@ -16,6 +16,13 @@ struct ContentView: View {
             VStack {
                 Spacer()
 
+                Image("cracovia")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 250.0, height: 250.0, alignment: .center)
+                    .clipShape(Circle())
+                
+                Spacer()
                 Text("\(radioClient.currentlyPlaying)").padding()
                 HStack {
                     Button(action: {
@@ -29,7 +36,6 @@ struct ContentView: View {
                         {
                             Image(systemName: "play").font(.title)
                         }
-                            
                     }
                 }.onAppear(perform: setUp)
 

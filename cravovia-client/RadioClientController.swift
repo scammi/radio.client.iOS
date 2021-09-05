@@ -48,7 +48,6 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
     }
     
     func pause() {
-        NSLog("pause")
         player?.pause()
         playing = false
     }
