@@ -28,7 +28,6 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
         
         setMediaInformation(streamingURL: self.urlCracovia!, metadata: currentlyPlaying)
 
-        setAudioPriority()
 
         // Create palyer
         player = AVPlayer(playerItem: playerItem)
@@ -95,8 +94,6 @@ func setMediaInformation(streamingURL: URL, metadata: String)
     
     nowPlayingInfoCenter.nowPlayingInfo = nowPlayingInfo
     nowPlayingInfoCenter.playbackState = .playing
-    
-//    print("Now playing lock screen: \(String(describing: MPNowPlayingInfoCenter.default().nowPlayingInfo))")
 }
 
 func setAudioPriority()
