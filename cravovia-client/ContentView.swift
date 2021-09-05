@@ -26,7 +26,11 @@ struct ContentView: View {
             }) {
                 Image(systemName: "pause")
             }
-        }
+        }.onAppear(perform: setUp)
+    }
+    
+    private func setUp(){
+        return radioClient.setUp()
     }
 }
 

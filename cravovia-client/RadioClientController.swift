@@ -15,29 +15,28 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
     
     @Published var currentlyPlaying: String = " "
     @Published var playing = false
-    var streaming = "https://tolkien.republicahosting.net:1614/live"
+    let urlCracovia = URL(string: "https://tolkien.republicahosting.net:1614/live")
+    
+    func setUp() {
+        // Create playerItem
+        let playerItem: AVPlayerItem = AVPlayerItem(url: self.urlCracovia!)
+        
+        // Metadata output processing
+        let metadataOutput = AVPlayerItemMetadataOutput(identifiers: nil)
+        metadataOutput.setDelegate(self, queue: DispatchQueue.main)
+        playerItem.add(metadataOutput)
+        
+        setMediaInformation(streamingURL: self.urlCracovia!, metadata: currentlyPlaying)
+
+        setAudioPriority()
+
+        // Create palyer
+        player = AVPlayer(playerItem: playerItem)
+    }
     
     func play() {
-        if !playing
-        {
-            NSLog("playing")
-            
-            // Create playerItem
-            let urlCracovia = URL(string: streaming)
-            let playerItem: AVPlayerItem = AVPlayerItem(url: urlCracovia!)
-            
-            // Metadata output processing
-            let metadataOutput = AVPlayerItemMetadataOutput(identifiers: nil)
-            metadataOutput.setDelegate(self, queue: DispatchQueue.main)
-            playerItem.add(metadataOutput)
-            
-            setMediaInformation(streamingURL: urlCracovia!)
-            setupNowPlayingInfoCenter()
-            setAudioPriority()
-            
-            // Create palyer
-            player = AVPlayer(playerItem: playerItem)
-        }
+        
+        setupNowPlayingInfoCenter()
         
         player?.play()
         playing = true
@@ -53,6 +52,8 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
         if let item = groups.first?.items.first // make this an AVMetadata item
         {
             self.currentlyPlaying = String(describing: item.value(forKeyPath: "value")!)
+            setMediaInformation(streamingURL: URL(string: "https://tolkien.republicahosting.net:1614/live")!, metadata: currentlyPlaying)
+
             NSLog("Now Playing: \n \(self.currentlyPlaying)") // print the results
         } else {
             NSLog("MetaData Error") // No Metadata or Could not read
@@ -72,7 +73,7 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
       }
 }
 
-func setMediaInformation(streamingURL: URL)
+func setMediaInformation(streamingURL: URL, metadata: String)
 {
     // Display palying info
     let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
@@ -87,15 +88,15 @@ func setMediaInformation(streamingURL: URL)
     nowPlayingInfo[MPNowPlayingInfoPropertyMediaType] = "stream"
     nowPlayingInfo[MPNowPlayingInfoPropertyIsLiveStream] = true
     nowPlayingInfo[MPMediaItemPropertyTitle] = "Radio Cracovia"
-    nowPlayingInfo[MPMediaItemPropertyArtist] = "artist"
+    nowPlayingInfo[MPMediaItemPropertyArtist] = metadata
     nowPlayingInfo[MPMediaItemPropertyArtwork] = mediaArtwork
-    nowPlayingInfo[MPMediaItemPropertyAlbumArtist] = "albumartist"
+//    nowPlayingInfo[MPMediaItemPropertyAlbumArtist] = "albumartist"
     nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = "albumtitle"
     
     nowPlayingInfoCenter.nowPlayingInfo = nowPlayingInfo
     nowPlayingInfoCenter.playbackState = .playing
     
-    print("Now playing lock screen: \(String(describing: MPNowPlayingInfoCenter.default().nowPlayingInfo))")
+//    print("Now playing lock screen: \(String(describing: MPNowPlayingInfoCenter.default().nowPlayingInfo))")
 }
 
 func setAudioPriority()
