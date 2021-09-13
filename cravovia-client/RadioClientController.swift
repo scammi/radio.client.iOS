@@ -93,7 +93,6 @@ func setMediaInformation(streamingURL: URL, metadata: String)
     nowPlayingInfo[MPNowPlayingInfoPropertyAssetURL] = streamingURL
     nowPlayingInfo[MPNowPlayingInfoPropertyMediaType] = "stream"
     nowPlayingInfo[MPNowPlayingInfoPropertyIsLiveStream] = true
-//    nowPlayingInfo[MPMediaItemPropertyTitle] = "Radio Cracovia"
     nowPlayingInfo[MPMediaItemPropertyArtist] = metadata
     nowPlayingInfo[MPMediaItemPropertyArtwork] = mediaArtwork
     

@@ -14,20 +14,35 @@ class Utils {
         
         let album = metadata[0]
         let song  = metadata[1]
+        
+        
+        let cleanSong = cleanSong(song: song)
+        
         var nowPlaying = ""
         
         if album == "Unknown"
         {
-            nowPlaying = song
+            nowPlaying = cleanSong
         }
         else
         {
-            nowPlaying = "\(album) - \(song)"
+            nowPlaying = "\(album) - \(cleanSong)"
         }
-        
+    
         
         print("PARSE METADATA >>>> album: \(album), song: \(song)")
 
         return nowPlaying
+    }
+    
+    static func cleanSong(song name: String) -> String
+    {
+        let bracketIndex = name.firstIndex(of: "[")
+        
+        if (bracketIndex != nil)
+        {
+             return String(name[..<bracketIndex!])
+        }
+        else { return name }
     }
 }
