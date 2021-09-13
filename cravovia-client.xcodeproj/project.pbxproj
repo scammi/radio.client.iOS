@@ -8,17 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		D46E100026E520550098F8BE /* RadioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46E0FFF26E520550098F8BE /* RadioModel.swift */; };
-		D47A9C1A26CDCFC10070FA6A /* cracovia.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A9C1926CDCFC10070FA6A /* cracovia.png */; };
 		D4A3888126B9D9C8003BF092 /* cravovia_clientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A3888026B9D9C8003BF092 /* cravovia_clientApp.swift */; };
 		D4A3888326B9D9C8003BF092 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A3888226B9D9C8003BF092 /* ContentView.swift */; };
 		D4A3888526B9D9CA003BF092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A3888426B9D9CA003BF092 /* Assets.xcassets */; };
 		D4A3888826B9D9CA003BF092 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A3888726B9D9CA003BF092 /* Preview Assets.xcassets */; };
 		D4A3889026B9EF34003BF092 /* RadioClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A3888F26B9EF34003BF092 /* RadioClientController.swift */; };
+		D4ECE88A26EE9C6300D7AEE1 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4ECE88926EE9C6300D7AEE1 /* utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D46E0FFF26E520550098F8BE /* RadioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioModel.swift; sourceTree = "<group>"; };
-		D47A9C1926CDCFC10070FA6A /* cracovia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cracovia.png; path = ../../../../../Desktop/cracovia.png; sourceTree = "<group>"; };
 		D4A3887D26B9D9C8003BF092 /* cravovia-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cravovia-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A3888026B9D9C8003BF092 /* cravovia_clientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cravovia_clientApp.swift; sourceTree = "<group>"; };
 		D4A3888226B9D9C8003BF092 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,6 +25,7 @@
 		D4A3888726B9D9CA003BF092 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D4A3888926B9D9CA003BF092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4A3888F26B9EF34003BF092 /* RadioClientController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioClientController.swift; sourceTree = "<group>"; };
+		D4ECE88926EE9C6300D7AEE1 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +58,7 @@
 		D4A3887F26B9D9C8003BF092 /* cravovia-client */ = {
 			isa = PBXGroup;
 			children = (
+				D4ECE88926EE9C6300D7AEE1 /* utils.swift */,
 				D4A3888026B9D9C8003BF092 /* cravovia_clientApp.swift */,
 				D4A3888F26B9EF34003BF092 /* RadioClientController.swift */,
 				D46E0FFF26E520550098F8BE /* RadioModel.swift */,
@@ -72,7 +73,6 @@
 		D4A3888626B9D9CA003BF092 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				D47A9C1926CDCFC10070FA6A /* cracovia.png */,
 				D4A3888726B9D9CA003BF092 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -135,7 +135,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D47A9C1A26CDCFC10070FA6A /* cracovia.png in Resources */,
 				D4A3888826B9D9CA003BF092 /* Preview Assets.xcassets in Resources */,
 				D4A3888526B9D9CA003BF092 /* Assets.xcassets in Resources */,
 			);
@@ -148,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4ECE88A26EE9C6300D7AEE1 /* utils.swift in Sources */,
 				D4A3888326B9D9C8003BF092 /* ContentView.swift in Sources */,
 				D4A3889026B9EF34003BF092 /* RadioClientController.swift in Sources */,
 				D4A3888126B9D9C8003BF092 /* cravovia_clientApp.swift in Sources */,

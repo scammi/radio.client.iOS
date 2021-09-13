@@ -55,7 +55,9 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
     func metadataOutput(_ output: AVPlayerItemMetadataOutput, didOutputTimedMetadataGroups groups: [AVTimedMetadataGroup], from track: AVPlayerItemTrack?) {
         if let item = groups.first?.items.first // make this an AVMetadata item
         {
-            self.currentlyPlaying = String(describing: item.value(forKeyPath: "value")!)
+            // Parse metadata
+            self.currentlyPlaying = Utils.parseMetaData(metadata: String(describing: item.value(forKeyPath: "value")!))
+
             setMediaInformation(streamingURL: self.urlCracovia!, metadata: currentlyPlaying)
 
             NSLog("Now Playing: \n \(self.currentlyPlaying)") // print the results
@@ -91,11 +93,9 @@ func setMediaInformation(streamingURL: URL, metadata: String)
     nowPlayingInfo[MPNowPlayingInfoPropertyAssetURL] = streamingURL
     nowPlayingInfo[MPNowPlayingInfoPropertyMediaType] = "stream"
     nowPlayingInfo[MPNowPlayingInfoPropertyIsLiveStream] = true
-    nowPlayingInfo[MPMediaItemPropertyTitle] = "Radio Cracovia"
+//    nowPlayingInfo[MPMediaItemPropertyTitle] = "Radio Cracovia"
     nowPlayingInfo[MPMediaItemPropertyArtist] = metadata
     nowPlayingInfo[MPMediaItemPropertyArtwork] = mediaArtwork
-//    nowPlayingInfo[MPMediaItemPropertyAlbumArtist] = "albumartist"
-    nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = "albumtitle"
     
     nowPlayingInfoCenter.nowPlayingInfo = nowPlayingInfo
     nowPlayingInfoCenter.playbackState = .playing
