@@ -15,12 +15,11 @@ class Utils {
         let album = metadata[0]
         let song  = metadata[1]
         
-        
         let cleanSong = cleanSong(_: song)
         
         var nowPlaying = ""
-        
-        if album == "Unknown"
+
+        if album == "Unknown "
         {
             nowPlaying = cleanSong
         }
