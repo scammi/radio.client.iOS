@@ -24,35 +24,33 @@ struct ContentView: View {
             ZStack {
                 Color.black.ignoresSafeArea()
                 VStack {
-                    Spacer()
-
                     Image("cracovia")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 250.0, height: 250.0, alignment: .center)
                         .clipShape(Circle())
                     
-                    Spacer()
                     Text("\(radioClient.currentlyPlaying)").padding()
-                    HStack {
-                        Button(action: {
-                            radioClient.play()
-                        }) {
-                            if (radioClient.playing)
-                            {
-                                Image(systemName: "pause").font(.title)
-                            }
-                            else
-                            {
-                                Image(systemName: "play").font(.title)
-                            }
+                    
+                    Button(action: {
+                        radioClient.play()
+                    }) {
+                        if (radioClient.playing)
+                        {
+                            Image(systemName: "pause").resizable()
+                                .frame(width: 30.0, height: 30.0)
                         }
-                    }.onAppear(perform: setUp)
-
+                        else
+                        {
+                            Image(systemName: "play").resizable()
+                                .frame(width: 30.0, height: 30.0)
+                        }
+                    }.onAppear(perform: setUp).offset(y:100)
+                                                   
                 }.navigationTitle("Radio Cracovia").navigationBarHidden(false)
 
             }.foregroundColor(.white)
-            }
+        }
             
     }
 
