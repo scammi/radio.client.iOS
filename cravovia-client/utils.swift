@@ -16,7 +16,7 @@ class Utils {
         let song  = metadata[1]
         
         
-        let cleanSong = cleanSong(song: song)
+        let cleanSong = cleanSong(_: song)
         
         var nowPlaying = ""
         
@@ -35,7 +35,7 @@ class Utils {
         return nowPlaying
     }
     
-    static func cleanSong(song name: String) -> String
+    static func cleanSong(_ name: String) -> String
     {
         let bracketIndex = name.firstIndex(of: "[")
         
