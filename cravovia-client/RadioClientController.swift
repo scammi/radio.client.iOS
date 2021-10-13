@@ -58,7 +58,9 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
         {
             // Parse metadata
             self.currentlyPlaying = Utils.parseMetaData(metadata: String(describing: item.value(forKeyPath: "value")!))
-
+            
+            AlbumCover.getId(currentlyPlaying: currentlyPlaying)
+            
             setMediaInformation(streamingURL: self.urlCracovia!, metadata: currentlyPlaying)
 
             NSLog("Now Playing: \n \(self.currentlyPlaying)") // print the results
@@ -92,7 +94,7 @@ func setMediaInformation(streamingURL: URL, metadata: String)
     }
     
     // Get album metadata, query service
-    AlbumCover.getId()
+//    AlbumCover.getId()
     
     nowPlayingInfo[MPNowPlayingInfoPropertyAssetURL] = streamingURL
     nowPlayingInfo[MPNowPlayingInfoPropertyMediaType] = "stream"

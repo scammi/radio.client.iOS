@@ -10,17 +10,23 @@ import Foundation
 class AlbumCover {
     static func getAlbum() {
         
+        
     }
     
-    static func getId() {
-        // Create URL        
+    static func getId(currentlyPlaying: String!) {
+        let metadata = currentlyPlaying.components(separatedBy: "-")
+        
+        let album = metadata[0]
+//        let song  = metadata[1]
+
+        // Create URL
         var components = URLComponents()
         components.scheme = "https"
         components.host = "musicbrainz.org"
         components.path = "/ws/2/cdstub"
         components.queryItems = [
             URLQueryItem(name: "limit", value: "1"),
-            URLQueryItem(name: "query", value: "title:dark side of the moon")
+            URLQueryItem(name: "query", value: "title:\(album)")
         ]
         
         guard let requestUrl = components.url else { fatalError() }
@@ -49,7 +55,6 @@ class AlbumCover {
             if let data = data, let dataString = String(data: data, encoding: .utf8) {
                 print("Response data string:\n \(dataString)")
             }
-            
         }
         task.resume()
     }
