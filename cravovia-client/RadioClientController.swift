@@ -91,6 +91,9 @@ func setMediaInformation(streamingURL: URL, metadata: String)
       return image
     }
     
+    // Get album metadata, query service
+    AlbumCover.getId()
+    
     nowPlayingInfo[MPNowPlayingInfoPropertyAssetURL] = streamingURL
     nowPlayingInfo[MPNowPlayingInfoPropertyMediaType] = "stream"
     nowPlayingInfo[MPNowPlayingInfoPropertyIsLiveStream] = true

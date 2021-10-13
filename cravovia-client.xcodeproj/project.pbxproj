@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D46E100026E520550098F8BE /* RadioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46E0FFF26E520550098F8BE /* RadioModel.swift */; };
+		D482B91C271761F600693479 /* AlbumCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482B91B271761F600693479 /* AlbumCover.swift */; };
 		D4A3888126B9D9C8003BF092 /* cravovia_clientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A3888026B9D9C8003BF092 /* cravovia_clientApp.swift */; };
 		D4A3888326B9D9C8003BF092 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A3888226B9D9C8003BF092 /* ContentView.swift */; };
 		D4A3888526B9D9CA003BF092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A3888426B9D9CA003BF092 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		D46E0FFF26E520550098F8BE /* RadioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioModel.swift; sourceTree = "<group>"; };
+		D482B91B271761F600693479 /* AlbumCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCover.swift; sourceTree = "<group>"; };
 		D4A3887D26B9D9C8003BF092 /* cravovia-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cravovia-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A3888026B9D9C8003BF092 /* cravovia_clientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cravovia_clientApp.swift; sourceTree = "<group>"; };
 		D4A3888226B9D9C8003BF092 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				D4ECE88926EE9C6300D7AEE1 /* utils.swift */,
+				D482B91B271761F600693479 /* AlbumCover.swift */,
 				D4A3888026B9D9C8003BF092 /* cravovia_clientApp.swift */,
 				D4A3888F26B9EF34003BF092 /* RadioClientController.swift */,
 				D46E0FFF26E520550098F8BE /* RadioModel.swift */,
@@ -152,6 +155,7 @@
 				D4A3889026B9EF34003BF092 /* RadioClientController.swift in Sources */,
 				D4A3888126B9D9C8003BF092 /* cravovia_clientApp.swift in Sources */,
 				D46E100026E520550098F8BE /* RadioModel.swift in Sources */,
+				D482B91C271761F600693479 /* AlbumCover.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

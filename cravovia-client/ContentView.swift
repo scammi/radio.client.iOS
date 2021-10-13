@@ -47,7 +47,7 @@ struct ContentView: View {
                         }
                     }.onAppear(perform: setUp).offset(y:100)
                                                    
-                }.navigationTitle("Radio Cracovia").navigationBarHidden(false)               .navigationBarItems(
+                }.navigationTitle("Radio Cracovia").navigationBarHidden(false).navigationBarItems(
                     trailing:
                         Button(action: {
                             if let url = URL(string: "https://www.instagram.com/radiocracovia/") {
