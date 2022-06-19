@@ -15,7 +15,7 @@ class RadioClient: NSObject, AVPlayerItemMetadataOutputPushDelegate, ObservableO
     
     @Published var currentlyPlaying: String = " "
     @Published var playing = false
-    let urlCracovia = URL(string: "http://198.50.225.239:8010/live")
+    let urlCracovia = URL(string: "https://tolkien.republicahosting.net:1614/live")
     
     func setUp() {
         // Create playerItem
