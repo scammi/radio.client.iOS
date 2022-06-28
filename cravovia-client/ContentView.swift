@@ -45,7 +45,7 @@ struct ContentView: View {
                             Image(systemName: "play").resizable()
                                 .frame(width: 30.0, height: 30.0)
                         }
-                    }.onAppear(perform: setUp).offset(y:0)
+                    }.onAppear(perform: setUp)
                                                    
                 }.navigationTitle("Radio Cracovia").navigationBarHidden(false).navigationBarItems(
                     trailing:
